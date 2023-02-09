@@ -1,0 +1,23 @@
+.SignInButton{
+  all: unset;
+  height: 4.8rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  cursor: pointer;
+
+  font-weight: bold;
+  background-color: var(--gray850);
+  padding: 0 2.0rem;
+  transition: filter 0.2s;
+
+  &:hover{
+    filter: brightness(0.8);
+  }
+
+  svg{
+    width: 2.0rem;
+    height: 2.0rem;
+  }
+}
