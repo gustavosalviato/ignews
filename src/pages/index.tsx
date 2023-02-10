@@ -4,6 +4,7 @@ import Image from 'next/image'
 import { SubscribeButton } from '@/components/SubscribeButton'
 import { GetStaticProps } from 'next'
 import { stripe } from '@/services/stripe'
+import { signIn, useSession } from 'next-auth/react'
 
 interface HomeProps {
   product: {
@@ -30,7 +31,9 @@ export default function Home({ product }: HomeProps) {
             <span>for {product.amount} month</span>
           </p>
 
-          <SubscribeButton priceId={product.priceId}/>
+          <SubscribeButton
+           priceId={product.priceId}
+           />
         </section>
 
         <Image src="/images/avatar.svg" alt="Girl Coding" width={334} height={520} />
