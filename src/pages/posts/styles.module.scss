@@ -1,0 +1,52 @@
+.container{
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 3.2rem;
+}
+
+.content{
+  max-width: 720px;
+  margin: 8rem auto 0;
+  
+  a{
+    display: flex;
+    flex-direction: column;
+
+    & + a {
+      margin-top: 3.2rem;
+      padding-top: 3.2rem;
+      border-top: 1px solid var(--gray700);
+    }
+
+    
+    time{
+      color: var(--gray300);
+      font-weight: 400;
+    }
+ 
+    strong{
+      color: var(--white);
+      display: block;
+      margin-top: 1.6rem;
+      font-size: 2.4rem;
+      line-height: 3.4rem;
+
+      transition: color 0.3s;
+
+    
+    }
+
+    p{
+      color: var(--gray300);
+      line-height: 2.2rem;
+      margin-top: 0.4rem;
+    }
+
+
+    &:hover strong{
+      color: var(--yellow500);
+    }
+  }
+
+}
+

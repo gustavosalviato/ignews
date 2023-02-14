@@ -23,7 +23,7 @@
       height: 8.0rem;
       line-height: 8.0rem;
       color: var(--gray300);
-      transition: color 0.2s;
+      transition: all ease-in-out 300ms
 
       & + a{
         margin-left: 3.2rem;

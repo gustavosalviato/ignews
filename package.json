@@ -26,6 +26,7 @@
     "faunadb": "^4.7.1",
     "next": "13.1.6",
     "next-auth": "^4.19.2",
+    "prismic-dom": "^2.2.7",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
@@ -35,6 +36,7 @@
   },
   "devDependencies": {
     "@prismicio/types": "^0.2.7",
+    "@types/prismic-dom": "^2.1.1",
     "slice-machine-ui": "^0.6.1"
   }
 }
