@@ -40,10 +40,12 @@ export default function Posts({ posts }: PostsProps) {
   )
 }
 
-export const getStaticProps: GetStaticProps = async ({ params, previewData }) => {
+export const getStaticProps: GetStaticProps = async ({ params, previewData, }) => {
+
   const client = createClient({ previewData })
 
   const response = await client.getAllByType('post')
+  
   const posts = response.map((post) => {
     return {
       slug: post.uid,

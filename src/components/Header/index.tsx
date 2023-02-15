@@ -10,11 +10,11 @@ export function Header() {
       <div className={styles.headerContent}>
         <img src="/images/logo.svg" alt="logo" />
         <nav>
-          <ActiveLink href="/" prefetch legacyBehavior activeClassName={styles.active}>
+          <ActiveLink href="/" legacyBehavior activeClassName={styles.active}>
             <a>Home</a>
           </ActiveLink>
 
-          <ActiveLink href='/posts' prefetch legacyBehavior activeClassName={styles.active}>
+          <ActiveLink href='/posts' legacyBehavior activeClassName={styles.active}>
             <a>Posts</a>
           </ActiveLink>
 

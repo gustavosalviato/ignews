@@ -7,6 +7,8 @@ export function SignInButton() {
 
   const session = useSession()
 
+  
+
   return session.status === 'authenticated' ? (
     <button
       type="button"

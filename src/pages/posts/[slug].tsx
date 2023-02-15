@@ -3,6 +3,7 @@ import Head from "next/head";
 import { createClient } from "prismicio";
 import { RichText } from 'prismic-dom'
 import styles from './styles/posts.module.scss'
+import { getSession } from 'next-auth/react'
 
 interface PostsProps {
   post: {
@@ -37,7 +38,20 @@ export default function Posts({ post }: PostsProps) {
   )
 }
 
-export const getServerSideProps: GetServerSideProps = async ({ params, previewData }) => {
+export const getServerSideProps: GetServerSideProps = async ({ params, previewData, req }) => {
+  const session = await getSession({ req })
+
+  console.log(JSON.stringify(session, null, 2))
+
+  // if (!session?.activeSubscription) {
+  //   return {
+  //     redirect: {
+  //       destination: '/',
+  //       permanent: false,
+  //     }
+  //   }
+  // }
+
   const slug = params?.slug
 
   const client = createClient({ previewData })
@@ -55,8 +69,6 @@ export const getServerSideProps: GetServerSideProps = async ({ params, previewDa
       year: 'numeric'
     })
   }
-
-  console.log(post)
 
   return {
     props: {
