@@ -14,10 +14,10 @@ const routes = [
     type: 'post',
     path: '/posts',
   },
-  // {
-  //   type: 'page',
-  //   path: '/:uid',
-  // },
+  {
+    type: 'post',
+    path: '/posts/:uid',
+  },
 ]
 
 /**

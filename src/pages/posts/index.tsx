@@ -3,6 +3,7 @@ import Head from "next/head"
 import { createClient } from "prismicio"
 import styles from './styles.module.scss'
 import { RichText } from 'prismic-dom'
+import Link from "next/link"
 
 interface PostsProps {
   posts: {
@@ -16,19 +17,21 @@ export default function Posts({ posts }: PostsProps) {
   return (
     <>
       <Head>
-        Posts
+        Post | ignews
       </Head>
 
       <main className={styles.container}>
         <div className={styles.content}>
           {posts.map((post) => (
-            <a key={post.slug} href="#">
-              <time>{post.updatedAt}</time>
+            <Link href={`/posts/${post.slug}`} legacyBehavior>
+              <a key={post.slug}>
+                <time>{post.updatedAt}</time>
 
-              <strong>{post.title}</strong>
+                <strong>{post.title}</strong>
 
-              <p>{post.content}</p>
-            </a>
+                <p>{post.content}</p>
+              </a>
+            </Link>
 
           ))}
         </div>

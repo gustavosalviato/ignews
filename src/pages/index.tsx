@@ -17,7 +17,7 @@ export default function Home({ product }: HomeProps) {
   return (
     <>
       <Head>
-        <title>Inicio ig.news</title>
+        <title>Home | ignews</title>
       </Head>
 
       <main className={styles.contentContainer}>
@@ -32,8 +32,8 @@ export default function Home({ product }: HomeProps) {
           </p>
 
           <SubscribeButton
-           priceId={product.priceId}
-           />
+            priceId={product.priceId}
+          />
         </section>
 
         <Image src="/images/avatar.svg" alt="Girl Coding" width={334} height={520} />
