@@ -86,6 +86,8 @@ export const getStaticProps: GetStaticProps = async ({ params, previewData, }) =
     })
   }
 
+  
+
   return {
     props: {
       post

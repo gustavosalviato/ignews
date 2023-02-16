@@ -2,7 +2,9 @@ import NextAuth, { Session, User } from "next-auth"
 import GithubProvider from "next-auth/providers/github"
 import { query as q } from 'faunadb'
 import { faunadb } from '../../../services/fauna'
-
+interface IUserRef {
+  ref: string
+}
 
 export const authOptions = {
   providers: [
@@ -13,36 +15,62 @@ export const authOptions = {
   ],
 
   callbacks: {
-    // async session({ session }) {
+    async session({ session }) {
 
-    //   const userActiveSubscription = await faunadb.query(
-    //     q.Get(
-    //       q.Intersection(
-    //         q.Match(
-    //           q.Index('sub_by_user_ref'),
-    //           q.Select(
-    //             'ref',
-    //             q.Get(
-    //               q.Match(
-    //                 q.Index('user_by_email'),
-    //                 q.Casefold(session.user?.email)
-    //               )
-    //             )
-    //           )
-    //         ),
-    //       )
-    //     ),
-    //   )
+      // q.Select(
+      //   'ref',
+      //   q.Get(
+      //     q.Match(
+      //       q.Index('subscription_by_id'),
+      //       subscription.id
+      //     )
+      //   )
+      // ),
+      try {
+        // const userRef = await faunadb.query(
 
-    //   return {
-    //     ...session,
-    //     activeSubscription: userActiveSubscription
-    //   }
+        // )
 
-    //   // return {
-    //   //   ...session,
-    //   //   activeSubscription: null
-    // }
+        const activeSub = await faunadb.query(
+          q.Get(
+            q.Intersection([
+              // q.Match(
+              //   q.Index('sub_by_status'),
+              //   'active'
+              // ),
+              q.Match(
+                q.Index('sub_by_user_ref'),
+                q.Select(
+                  'ref',
+                  q.Get(
+                    q.Match(
+                      q.Index('user_by_stripe_customer_id'),
+                      q.Casefold('cus_NLkdaqBac47fAw')
+                    )
+                  )
+                )
+              ),
+            ]),
+
+          )
+
+
+
+        )
+
+        return {
+          ...session,
+          activeSub
+        }
+
+      } catch {
+        return {
+          ...session,
+          activeSub: null,
+        }
+      }
+
+    }
   },
 
   async signIn({ user }) {

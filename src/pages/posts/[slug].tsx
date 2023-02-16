@@ -43,14 +43,14 @@ export const getServerSideProps: GetServerSideProps = async ({ params, previewDa
 
   console.log(JSON.stringify(session, null, 2))
 
-  // if (!session?.activeSubscription) {
-  //   return {
-  //     redirect: {
-  //       destination: '/',
-  //       permanent: false,
-  //     }
-  //   }
-  // }
+  if (!session?.userActiveSubscription) {
+    return {
+      redirect: {
+        destination: '/',
+        permanent: false,
+      }
+    }
+  }
 
   const slug = params?.slug
 
