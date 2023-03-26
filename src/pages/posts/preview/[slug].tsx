@@ -1,6 +1,6 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 import Head from "next/head";
-import { createClient } from "prismicio";
+import { createClient } from "../../../../prismicio";
 import { RichText } from 'prismic-dom'
 import styles from '../styles/posts.module.scss'
 import Link from "next/link";
@@ -24,10 +24,10 @@ export default function PreviewPost({ post }: PreviewPostProps) {
 
 
   useEffect(() => {
-    if (session.data?.user) {
+    if (session.data?.userActiveSubscription) {
       router.push(`/posts/${post.slug}`)
     }
-  }, [session.data?.user])
+  }, [session.data?.userActiveSubscription])
 
   return (
     <>
@@ -85,9 +85,6 @@ export const getStaticProps: GetStaticProps = async ({ params, previewData, }) =
       year: 'numeric'
     })
   }
-
-  
-
   return {
     props: {
       post

@@ -1,6 +1,6 @@
 import { GetServerSideProps } from "next";
 import Head from "next/head";
-import { createClient } from "prismicio";
+import { createClient } from "../../../prismicio";
 import { RichText } from 'prismic-dom'
 import styles from './styles/posts.module.scss'
 import { getSession } from 'next-auth/react'
@@ -41,8 +41,6 @@ export default function Posts({ post }: PostsProps) {
 export const getServerSideProps: GetServerSideProps = async ({ params, previewData, req }) => {
   const session = await getSession({ req })
 
-  console.log(JSON.stringify(session, null, 2))
-
   if (!session?.userActiveSubscription) {
     return {
       redirect: {
@@ -69,6 +67,7 @@ export const getServerSideProps: GetServerSideProps = async ({ params, previewDa
       year: 'numeric'
     })
   }
+  
 
   return {
     props: {
